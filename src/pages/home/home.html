@@ -1,17 +1,49 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+﻿
+<ion-content >
+  <div class="banner-part" >
+    <ion-slides loop pager>
+      <ion-slide class="banner" *ngFor="let item of banners" [style.background-image]="'url('+uploadpath+'banner'+'/'+item.pic+')'">
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of playtypes" col-3 text-center padding>
+        <img src="{{uploadpath}}playtype/{{item.img}}" />
+        <h6>{{item.name}}</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div>
+    <ion-segment [(ngModel)]="supertype" mode="md">
+      <ion-segment-button value="near">
+        离我最近
+      </ion-segment-button>
+      <ion-segment-button value="hot">
+        热门
+      </ion-segment-button>
+      <ion-segment-button value="new">
+        最新
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div [ngSwitch]="supertype">
+    <ion-grid *ngSwitchCase="'near'">
+      <ion-row *ngFor="let item of nears">
+        <ion-col>Near{{item}}</ion-col>
+      </ion-row>
+    </ion-grid>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-grid *ngSwitchCase="'hot'">
+      <ion-row>
+        <ion-col>Hot</ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngSwitchCase="'new'">
+      <ion-row>
+        <ion-col>New</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
