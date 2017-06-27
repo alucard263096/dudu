@@ -1,5 +1,6 @@
 ﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AppBase } from '../../app/app.base';
 
 /**
  * Generated class for the MemberPage page.
@@ -12,10 +13,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
     selector: 'page-member',
     templateUrl: 'member.html',
 })
-export class MemberPage {
+export class MemberPage extends AppBase  {
 
     constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+        super();
     }
 
     ionViewDidLoad() {

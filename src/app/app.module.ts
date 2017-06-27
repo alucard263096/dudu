@@ -5,7 +5,10 @@ import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http'; //for 3.0
 import { SQLite } from '@ionic-native/sqlite';
 
-import { HomePageModule } from '../pages/home/home.module';
+import { HomePage } from '../pages/home/home';
+import { MemberPage } from '../pages/member/member';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -18,7 +21,11 @@ enableProdMode();
 @NgModule({
     declarations: [
         MyApp,
-        TabsPage
+        TabsPage,
+        HomePage,
+        AboutPage,
+        ContactPage,
+        MemberPage
     ],
     imports: [
         HttpModule, //for 3.0
@@ -33,13 +40,15 @@ enableProdMode();
             backButtonIcon: "ios-arrow-back",
             statusbarPadding: false
         })
-        ,
-        HomePageModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        TabsPage
+        TabsPage,
+        HomePage,
+        AboutPage,
+        ContactPage,
+        MemberPage
     ],
     providers: [
         StatusBar,
