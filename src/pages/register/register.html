@@ -1,0 +1,39 @@
+﻿<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="back()" icon-left clear color="primary">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      {{Lang["register"]}}
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list   *ngIf="step==1">
+    <ion-item>
+      <ion-label>+86</ion-label>
+      <ion-input style="font-size:1.4rem" type="number" [value]="mobile" (input)="mobile=$event.target.value" placeholder="{{Lang['inputmobileno']}}">
+      </ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button block  *ngIf="step==1" (click)="next1()">{{Lang["next"]}}</button>
+
+  <ion-grid *ngIf="step==2">
+
+  </ion-grid>
+  <ion-grid *ngIf="step==3">
+
+  </ion-grid>
+</ion-content>

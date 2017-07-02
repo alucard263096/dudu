@@ -1,4 +1,4 @@
-<!--
+﻿<!--
   Generated template for the LoginPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -20,20 +20,28 @@
 
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row>
-            <ion-col><button ion-button block>{{Lang["login"]}}</button></ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col><button ion-button color="secondary" block>{{Lang["register"]}}</button></ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col text-center>
-                <img class="logon-logo" src="/assets/img/qq.jpg" (click)="qqLogin()" />
-            </ion-col>
-            <ion-col text-center>
-                <img class="logon-logo" src="/assets/img/wechat.jpg" (click)="wechatLogin()" />
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-input type="number" [placeholder]="Lang['mobile']" [(ngModel)]="mobile" ></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-input type="password" [placeholder]="Lang['password']" [(ngModel)]="password"></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-col><button ion-button block (click)="login()">{{Lang["login"]}}</button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><button ion-button color="secondary" block  (click)="gotoRegister()">{{Lang["register"]}}</button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <img class="logon-logo" src="/assets/img/qq.jpg" (click)="qqLogin()" />
+      </ion-col>
+      <ion-col text-center>
+        <img class="logon-logo" src="/assets/img/wechat.jpg" (click)="wechatLogin()" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
