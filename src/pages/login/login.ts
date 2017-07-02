@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { AppBase } from '../../app/app.base';
 
 /**
  * Generated class for the LoginPage page.
@@ -9,16 +10,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+    selector: 'page-login',
+    templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage extends AppBase {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+        super();
+    }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+    dimiss() {
+        this.viewCtrl.dismiss();
+    }
+
+    ionViewDidLoad() {
+        //console.log('ionViewDidLoad LoginPage');
+
+        
+
+
+    }
 
 }

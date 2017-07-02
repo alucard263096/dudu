@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+      <ion-buttons start>
+          <button ion-button (click)="dimiss()" icon-left clear color="primary">
+              <ion-icon name="arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
+    <ion-title>{{Lang["login"]}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
 
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col><button ion-button block>{{Lang["login"]}}</button></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col><button ion-button color="secondary" block>{{Lang["register"]}}</button></ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <img class="logon-logo" src="/assets/img/qq.jpg" (click)="qqLogin()" />
+            </ion-col>
+            <ion-col text-center>
+                <img class="logon-logo" src="/assets/img/wechat.jpg" (click)="wechatLogin()" />
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
