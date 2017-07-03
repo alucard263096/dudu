@@ -19,6 +19,9 @@ import { MemberApi } from '../../providers/member.api';
 })
 export class RegisterPage extends AppBase {
     mobile: string = "";
+    verifycode: string = "";
+    resendreminder = 0;
+    resentmsg: string = this.Lang["waitresendsms"];
     step = 1;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public toastCtrl: ToastController
@@ -53,7 +56,9 @@ export class RegisterPage extends AppBase {
 
                     this.toast(this.toastCtrl, this.Lang["mobilehaveregister"]);
                 } else {
+                    this.sendVerifyCodeAgain();
                     this.step++;
+                    
                 }
             } else {
 
@@ -61,6 +66,29 @@ export class RegisterPage extends AppBase {
             }
         });
 
+    }
+    sendVerifyCodeAgain() {
+        this.memberApi.sendregistersms({ mobile: this.mobile }).then((data) => {
+            if (data.code == 0 || data.result == "SUCCESS") {
+                this.verifycode = "";
+                this.reminderResend();
+            } else if (data.result == "SENT_IN_MINUTE") {
+                this.toast(this.toastCtrl, this.Lang["retryafterminute"]);
+            } else {
+                this.toast(this.toastCtrl, this.Lang["smssentfail"]);
+            }
+        });
+    }
+
+    reminderResend() {
+        this.resendreminder = 60;
+        var obj = this;
+        var intervalObj = setInterval(function () {
+            obj.resendreminder--;
+            if (obj.resendreminder <= 0) {
+                clearInterval(intervalObj);
+            }
+        }, 1000);
     }
 
 }

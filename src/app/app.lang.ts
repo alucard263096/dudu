@@ -18,8 +18,12 @@ export class AppLang {
         AppLang.Lang["mobilecannotnull"] = "手机号码不正确";
         AppLang.Lang["register"] = "注册";
         AppLang.Lang["next"] = "下一步"; 
-        AppLang.Lang["inputmobileno"] = "请输入手机号码";
-        AppLang.Lang["mobilehaveregister"] = "手机号码已经被注册";
+        AppLang.Lang["inputmobileno"] = "请输入手机号码"; 
+        AppLang.Lang["mobilehaveregister"] = "手机号码已经被注册"; 
+        AppLang.Lang["retryafterminute"] = "请在一分钟后重试"; 
+        AppLang.Lang["smssentfail"] = "发送短信失败，请验证手机号码"; 
+        AppLang.Lang["waitresendsms"] = "重新发送";
+        AppLang.Lang["verifycode"] = "请输入短信验证码";
 
         
         

@@ -60,6 +60,43 @@ public bindmobile(data, showLoadingModal:boolean=true) {
 
 
 //
+public checkmobileregister(data, showLoadingModal:boolean=true) {
+        var url = ApiConfig.getApiUrl()+'member/checkmobileregister';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+
+        let body=ApiConfig.ParamUrlencoded(data);
+
+        let loading: Loading=null;
+        if(showLoadingModal){
+          loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+              if(ApiConfig.DataLoadedHandle('member/checkmobileregister',data,res)){
+                  if(showLoadingModal){
+      					     ApiConfig.DimissLoadingModal();
+                  }
+      				
+      					 return res.json();
+      				}else{
+                return Promise.reject(res);
+              }
+            })
+            .catch(err => {
+                
+                if(showLoadingModal){
+					         ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/checkmobileregister',data,err);
+            });
+
+        
+    }
+
+
+//
 public info(data, showLoadingModal:boolean=true) {
         var url = ApiConfig.getApiUrl()+'member/info';
         var headers = ApiConfig.GetHeader(url, data);
@@ -356,8 +393,8 @@ public wxappoauth(data, showLoadingModal:boolean=true) {
 
 
 //
-public checkmobileregister(data, showLoadingModal:boolean=true) {
-        var url = ApiConfig.getApiUrl()+'member/checkmobileregister';
+public sendregistersms(data, showLoadingModal:boolean=true) {
+        var url = ApiConfig.getApiUrl()+'member/sendregistersms';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
 
@@ -370,7 +407,7 @@ public checkmobileregister(data, showLoadingModal:boolean=true) {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-              if(ApiConfig.DataLoadedHandle('member/checkmobileregister',data,res)){
+              if(ApiConfig.DataLoadedHandle('member/sendregistersms',data,res)){
                   if(showLoadingModal){
       					     ApiConfig.DimissLoadingModal();
                   }
@@ -385,7 +422,7 @@ public checkmobileregister(data, showLoadingModal:boolean=true) {
                 if(showLoadingModal){
 					         ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/checkmobileregister',data,err);
+                return ApiConfig.ErrorHandle('member/sendregistersms',data,err);
             });
 
         
