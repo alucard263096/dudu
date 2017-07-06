@@ -23,7 +23,9 @@ export class AppLang {
         AppLang.Lang["retryafterminute"] = "请在一分钟后重试"; 
         AppLang.Lang["smssentfail"] = "发送短信失败，请验证手机号码"; 
         AppLang.Lang["waitresendsms"] = "重新发送";
-        AppLang.Lang["verifycode"] = "请输入短信验证码";
+        AppLang.Lang["verifycode"] = "请输入短信验证码"; 
+        AppLang.Lang["verifycodecannotnull"] = "验证码不能为空";
+        AppLang.Lang["verifyincorrect"] = "验证码不正确";
 
         
         

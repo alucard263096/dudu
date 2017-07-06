@@ -1,6 +1,7 @@
 ﻿import { NgModule, ErrorHandler, enableProdMode  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HttpModule } from '@angular/http'; //for 3.0
 import { SQLite } from '@ionic-native/sqlite';
@@ -39,7 +40,8 @@ enableProdMode();
             pageTransition: 'ios',
             backButtonIcon: "ios-arrow-back",
             statusbarPadding: false
-        })
+        }),
+        IonicStorageModule.forRoot()
     ],
     bootstrap: [IonicApp],
     entryComponents: [

@@ -38,7 +38,7 @@ export class LoginPage extends AppBase {
     gotoRegister() {
         var modal = this.modalCtrl.create("RegisterPage", { mobile: this.mobile });
         modal.onDidDismiss(data => {
-            if (data.code == 0) {
+            if (data.logined == true) {
                 this.dimiss();
             }
         });

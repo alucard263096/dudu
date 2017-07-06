@@ -8,14 +8,18 @@
       </ion-row>
       <ion-row >
         <ion-col col-12>
-          <div class="img-avatar" (click)="openLogin()">
+          <div *ngIf="!Member.isLogined()" class="img-avatar" (click)="openLogin()">
             <img src="/assets/img/bg-member-default.jpg" />
+          </div>
+          <div  *ngIf="Member.isLogined()" class="img-avatar" >
+            <img src="{{Member.photo}}" />
           </div>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12 text-center  >
-          <p  ion-text color="light" (click)="openLogin()">{{Lang["clicktologin"]}}</p>
+          <p  *ngIf="!Member.isLogined()"  ion-text color="light" (click)="openLogin()">{{Lang["clicktologin"]}}</p>
+          <p  ion-text color="light" >{{Member.name}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>

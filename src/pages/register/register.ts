@@ -91,4 +91,24 @@ export class RegisterPage extends AppBase {
         }, 1000);
     }
 
+    next2() {
+        if (this.verifycode.toString().trim()=="") {
+            this.toast(this.toastCtrl, this.Lang["verifycodecannotnull"]);
+            return;
+        }
+        var json = { mobile: this.mobile, verifycode: this.verifycode };
+        this.memberApi.smsregister(json).then((data) => {
+            if (data.code == -3) {
+                this.toast(this.toastCtrl, this.Lang["mobilehaveregister"]);
+            } else if(data.code == -1) {
+                this.toast(this.toastCtrl, this.Lang["verifyincorrect"]);
+            } else {
+                //alert(JSON.stringify(data));
+                data = data.return;
+                this.Member.setLogin(data.id, data.name, data.photo, data.loginname, data.email, data.mobile, data.token, data.oauthtype, data.oauthunionid);
+                this.viewCtrl.dismiss({ logined: true });
+            }
+        });
+    }
+
 }

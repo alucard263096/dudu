@@ -1,4 +1,5 @@
-﻿import {ApiConfig} from './api.config';
+﻿import { ApiConfig } from './api.config';
+import { Storage } from '@ionic/storage';
 
 export class AppUtil {
 	
@@ -48,7 +49,7 @@ export class AppUtil {
     public static FormatDate(val) {
         return val.substr(0, 10);
     }
-    public static Storage = null;
+    public static Storage: Storage = null;
 
     
 }
