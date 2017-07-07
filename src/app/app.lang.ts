@@ -25,12 +25,15 @@ export class AppLang {
         AppLang.Lang["waitresendsms"] = "重新发送";
         AppLang.Lang["verifycode"] = "请输入短信验证码"; 
         AppLang.Lang["verifycodecannotnull"] = "验证码不能为空";
-        AppLang.Lang["verifyincorrect"] = "验证码不正确";
+        AppLang.Lang["verifyincorrect"] = "验证码不正确"; 
+        AppLang.Lang["smslogin"] = "短信登录"; 
+        AppLang.Lang["getverifycode"] = "获取验证码";
+        AppLang.Lang["reminder"] = "剩余"; 
+        AppLang.Lang["mobilenotregister"] = "手机号码尚未注册";
+        AppLang.Lang["passwordcannotnull"] = "密码不能为空";
 
-        
-        
-        
-        
+
+
     }
     
 }

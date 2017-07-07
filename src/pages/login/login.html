@@ -20,15 +20,37 @@
 
 
 <ion-content padding>
+
+    <ion-segment [(ngModel)]="logintype" mode="md">
+        <ion-segment-button value="pwd">
+            密码登录
+        </ion-segment-button>
+        <ion-segment-button value="sms">
+            短信登录
+        </ion-segment-button>
+    </ion-segment>
+
+    <div [ngSwitch]="logintype">
+        <ion-list *ngSwitchCase="'pwd'">
+            <ion-item>
+                <ion-input type="text" [placeholder]="Lang['mobile']" [(ngModel)]="mobile"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="password" [placeholder]="Lang['password']" [(ngModel)]="password"></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-list *ngSwitchCase="'sms'">
+            <ion-item>
+                <ion-input type="text" [placeholder]="Lang['mobile']" [(ngModel)]="mobile"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" [placeholder]="Lang['verifycode']" [(ngModel)]="verifycode"></ion-input>
+                <button *ngIf="verifycodeReminder<=0" ion-button  item-end (click)="sendSmsLogin()">{{Lang["getverifycode"]}}</button>
+                <button *ngIf="verifycodeReminder>0" ion-button item-end color="light" [disabled]="true">{{Lang["reminder"]}}{{verifycodeReminder}}s</button>
+            </ion-item>
+        </ion-list>
+    </div>
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-input type="number" [placeholder]="Lang['mobile']" [(ngModel)]="mobile" ></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-input type="password" [placeholder]="Lang['password']" [(ngModel)]="password"></ion-input>
-    </ion-row>
     <ion-row>
       <ion-col><button ion-button block (click)="login()">{{Lang["login"]}}</button></ion-col>
     </ion-row>
