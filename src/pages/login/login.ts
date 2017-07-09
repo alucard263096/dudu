@@ -22,7 +22,9 @@ export class LoginPage extends AppBase {
     public mobile: string = "";
     public password: string = "";
     public verifycode: string = "";
-    verifycodeReminder= 0;
+    verifycodeReminder = 0;
+
+    public wechatInstalled = false;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public toastCtrl: ToastController
         , public memberApi: MemberApi) {
@@ -35,7 +37,7 @@ export class LoginPage extends AppBase {
 
     ionViewDidLoad() {
         //console.log('ionViewDidLoad LoginPage');
-        
+        this.checkWechatLogin();
     }
     gotoRegister() {
         var modal = this.modalCtrl.create("RegisterPage", { mobile: this.mobile });
@@ -110,5 +112,36 @@ export class LoginPage extends AppBase {
             }
         });
         
+    }
+
+    checkWechatLogin() {
+        try {
+            var loginpage = this;
+            Wechat.isInstalled(function (installed) {
+                loginpage.wechatInstalled = true;
+            });
+        } catch (e){
+
+        }
+    }
+
+    wechatLogin() {
+        var loginpage = this;
+            var scope = "snsapi_userinfo",
+                state = "_" + (+new Date());
+            Wechat.auth(scope, state, function (response) {
+                var json = { "oauthcode": response.code };
+                //alert(response.code);
+
+                loginpage.memberApi.wxappoauth(json).then(data => {
+                    //alert(JSON.stringify(data));
+
+                    loginpage.Member.setLogin(data.return.id, data.return.name, data.return.photo,
+                        data.return.loginname, data.return.email, data.return.mobile, data.return.token, data.return.oauthtype, data.return.oauthunionid);
+                });
+
+            }, function (reason) {
+
+                });
     }
 }

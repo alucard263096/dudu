@@ -11,7 +11,7 @@
           <div *ngIf="!Member.isLogined()" class="img-avatar" (click)="openLogin()">
             <img src="/assets/img/bg-member-default.jpg" />
           </div>
-          <div  *ngIf="Member.isLogined()" class="img-avatar" >
+          <div  *ngIf="Member.isLogined()" class="img-avatar"  (click)="openLogin()" >
             <img src="{{Member.photo}}" />
           </div>
         </ion-col>
@@ -19,7 +19,7 @@
       <ion-row>
         <ion-col col-12 text-center  >
           <p  *ngIf="!Member.isLogined()"  ion-text color="light" (click)="openLogin()">{{Lang["clicktologin"]}}</p>
-          <p  ion-text color="light" >{{Member.name}}</p>
+          <p  ion-text color="light"  (click)="openLogin()">{{Member.name}}</p>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -62,7 +62,7 @@
         <img class="logon-logo" src="/assets/img/qq.jpg" (click)="qqLogin()" />
       </ion-col>
       <ion-col text-center>
-        <img class="logon-logo" src="/assets/img/wechat.jpg" (click)="wechatLogin()" />
+        <img class="logon-logo" src="/assets/img/wechat.jpg" *ngIf="wechatInstalled" (click)="wechatLogin()" />
       </ion-col>
     </ion-row>
   </ion-grid>
