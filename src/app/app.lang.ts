@@ -29,8 +29,12 @@ export class AppLang {
         AppLang.Lang["smslogin"] = "短信登录"; 
         AppLang.Lang["getverifycode"] = "获取验证码";
         AppLang.Lang["reminder"] = "剩余"; 
-        AppLang.Lang["mobilenotregister"] = "手机号码尚未注册";
-        AppLang.Lang["passwordcannotnull"] = "密码不能为空";
+        AppLang.Lang["mobilenotregister"] = "手机号码尚未注册"; 
+        AppLang.Lang["passwordcannotnull"] = "密码不能为空"; 
+        AppLang.Lang["setting"] = "设置"; 
+        AppLang.Lang["memberinfo"] = "个人信息"; 
+        AppLang.Lang["changepassword"] = "修改密码";
+        AppLang.Lang["logout"] = "退出登录";
 
 
 

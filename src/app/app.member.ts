@@ -71,6 +71,13 @@ export class AppMember {
         });
     }
 
+    public logout() {
+
+        AppUtil.Storage.remove("memberlogin");
+        AppMember.instance = new AppMember();
+
+    }
+
     public isLogined() {
         return this.id.trim() != "";
     }

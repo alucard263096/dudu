@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { IonicPage } from 'ionic-angular';
 
 import { AppBase } from '../../app/app.base';
@@ -16,7 +16,7 @@ export class HomePage extends AppBase {
     playtypes = [];
     supertype = "near";
     nears = [];
-    constructor(public navCtrl: NavController, public bannerDao: BannerDao, public playtypeDao: PlaytypeDao) {
+    constructor(public navCtrl: NavController, public modalCtrl: ModalController, public bannerDao: BannerDao, public playtypeDao: PlaytypeDao) {
         super();
         for (var i = 0; i < 100; i++) {
             this.nears.push(i);
@@ -31,6 +31,8 @@ export class HomePage extends AppBase {
             .then((data) => {
                 this.playtypes = data;
             });
+
+        this.navCtrl.push("MemberSettingPage");
     }
     clickBanner() {
 

@@ -31,6 +31,7 @@
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-qqsdk": "^0.9.4",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.2",
         "cordova-plugin-wechat": "^2.0.0",
@@ -62,7 +63,10 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {}
+            "ionic-plugin-keyboard": {},
+            "cordova-plugin-qqsdk": {
+                "QQ_APP_ID": "1105386398"
+            }
         },
         "platforms": [
             "android"

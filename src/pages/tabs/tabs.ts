@@ -21,4 +21,7 @@ export class TabsPage extends AppBase {
       super();
       AppLang.init();
   }
+  ionViewDidLoad() {
+
+  }
 }

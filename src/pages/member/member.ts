@@ -26,5 +26,9 @@ export class MemberPage extends AppBase  {
         var modal = this.modalCtrl.create("LoginPage");
         modal.present();
     }
+    openSetting() {
+        var modal = this.modalCtrl.create("MemberSettingPage");
+        modal.present();
+    }
 
 }
