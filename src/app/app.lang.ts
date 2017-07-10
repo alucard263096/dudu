@@ -33,8 +33,17 @@ export class AppLang {
         AppLang.Lang["passwordcannotnull"] = "密码不能为空"; 
         AppLang.Lang["setting"] = "设置"; 
         AppLang.Lang["memberinfo"] = "个人信息"; 
-        AppLang.Lang["changepassword"] = "修改密码";
+        AppLang.Lang["changepassword"] = "修改密码"; 
         AppLang.Lang["logout"] = "退出登录";
+        AppLang.Lang["photo"] = "头像";
+        AppLang.Lang["name"] = "昵称";
+        AppLang.Lang["sexual"] = "性别";
+        AppLang.Lang["birth"] = "出生年月";
+        AppLang.Lang["introduce"] = "个人介绍";
+        AppLang.Lang["male"] = "男";
+        AppLang.Lang["female"] = "女";
+        AppLang.Lang["clicktoselect"] = "点击选择";
+        AppLang.Lang["updatefail"] = "更新失败";
 
 
 

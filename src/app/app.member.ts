@@ -25,29 +25,42 @@ export class AppMember {
         return AppMember.instance;
     }
 
+    public getPhoto() {
+        if (this.photo.trim() == "") {
+            return "/assets/img/bg-member-default.jpg";;
+        }
+        return this.photo.indexOf("http") == 0 ? this.photo : ApiConfig.getUploadPath() + "member/" + this.photo;
+        
+    }
+
     public setLogin(id, name, photo, loginname, email, mobile, token,oauthtype="",oauthunionid="") {
         this.id = id;
         this.name = name;
         this.photo = photo;
-        this.photo = this.photo.indexOf("http") == 0 ? this.photo : ApiConfig.getUploadPath() + "member/" + this.photo;
+        this.photo = 
         this.loginname = loginname;
         this.email = email;
         this.mobile = mobile;
         this.token = token;
         this.oauthtype = oauthtype;
         this.oauthunionid = oauthunionid;
-
         ApiConfig.SetToken(token, id);
+
+        this.saveMemberInfo();
+        
+    }
+
+    public saveMemberInfo() {
         var json = {
-            id: id,
-            name: name,
-            photo: photo,
-            loginname: loginname,
-            email: email,
-            mobile: mobile,
-            token: token,
-            oauthtype: oauthtype,
-            oauthunionid: oauthunionid
+            id: this.id,
+            name: this.name,
+            photo: this.photo,
+            loginname: this.loginname,
+            email: this.email,
+            mobile: this.mobile,
+            token: this.token,
+            oauthtype: this.oauthtype,
+            oauthunionid: this.oauthunionid
         };
         var jsonstr = JSON.stringify(json);
         AppUtil.Storage.set("memberlogin", jsonstr);
@@ -68,6 +81,8 @@ export class AppMember {
             this.token = jsonstr.token;
             this.oauthtype = jsonstr.oauthtype;
             this.oauthunionid = jsonstr.oauthunionid;
+
+            ApiConfig.SetToken(this.token, this.id);
         });
     }
 

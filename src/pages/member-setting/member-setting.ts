@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { AppBase} from '../../app/app.base';
 
@@ -27,6 +27,9 @@ export class MemberSettingPage extends AppBase {
     logout() {
         this.Member.logout();
         this.viewCtrl.dismiss();
+    }
+    gotoMemberInfo() {
+        this.navCtrl.push("MemberInfoPage");
     }
 
 }

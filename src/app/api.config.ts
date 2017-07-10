@@ -21,7 +21,8 @@ export class ApiConfig {
     public static ParamUrlencoded(json) {
         var arr = new Array();
         for (let i in json) {
-            arr.push(  i + "=" + encodeURIComponent(json[i]));
+            var str=json[i]==null?"":json[i].toString() ;
+            arr.push(  i + "=" + encodeURIComponent(str));
         }
         return arr.join("&");
     }
@@ -45,7 +46,7 @@ export class ApiConfig {
             }
             var poststrarr = new Array();
             for (let i in jsonarr) {
-                var str = jsonarr[i].toString() ;
+                var str = jsonarr[i]==null?"":jsonarr[i].toString() ;
                 str = str.replace(/[\-|\~|\_|\.|\!|\~|\*|\'|\(|\)]/g, "");
                 str = encodeURIComponent(str);
                 poststrarr.push(i + "=" + str);

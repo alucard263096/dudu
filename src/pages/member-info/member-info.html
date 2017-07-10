@@ -1,4 +1,4 @@
-<!--
+﻿<!--
   Generated template for the MemberInfoPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -7,12 +7,52 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>MemberInfo</ion-title>
+      <ion-buttons start>
+          <button ion-button (click)="dismiss()" icon-left clear color="primary">
+              <ion-icon name="arrow-back"></ion-icon>
+          </button>
+      </ion-buttons>
+    <ion-title>{{Lang["memberinfo"]}}</ion-title>
+      <ion-buttons end>
+          <button ion-button (click)="save()" icon-left clear color="primary">
+              <ion-icon name="checkmark"></ion-icon>
+          </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content style="background-color:#eeeeee;">
+  <ion-list>
+    <button ion-item>
+      <span>{{Lang["photo"]}}</span>
+      <ion-avatar item-end>
+        <img src="{{Member.getPhoto()}}">
+      </ion-avatar>
+    </button>
+    <button ion-item>
+      <span  style="max-width: 50%;">{{Lang["name"]}}</span>
+      <span item-end>
+        {{Member.name}}
+      </span>
+    </button>
+    <ion-item>
+      <ion-label>{{Lang["sexual"]}}</ion-label>
+      <ion-select [(ngModel)]="sexual" [placeholder]="Lang['clicktoselect']" item-end>
+        <ion-option value="M" >{{Lang["male"]}}</ion-option>
+        <ion-option value="F" >{{Lang["female"]}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{Lang["birth"]}}</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="birth" ion-end [placeholder]="Lang['clicktoselect']"></ion-datetime>
+    </ion-item>
+    <button ion-item>
+      <span>{{Lang["introduce"]}}</span>
+      <span style="max-width: 50%;" item-end>
+        {{introduce}}
+      </span>
+    </button>
+  </ion-list>
 </ion-content>

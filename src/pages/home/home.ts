@@ -32,7 +32,7 @@ export class HomePage extends AppBase {
                 this.playtypes = data;
             });
 
-        this.navCtrl.push("MemberSettingPage");
+        //this.navCtrl.push("MemberInfoPage");
     }
     clickBanner() {
 
