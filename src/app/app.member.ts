@@ -27,7 +27,7 @@ export class AppMember {
 
     public getPhoto() {
         if (this.photo.trim() == "") {
-            return "/assets/img/bg-member-default.jpg";;
+            return "assets/img/bg-member-default.jpg";;
         }
         return this.photo.indexOf("http") == 0 ? this.photo : ApiConfig.getUploadPath() + "member/" + this.photo;
         
@@ -46,11 +46,11 @@ export class AppMember {
         this.oauthunionid = oauthunionid;
         ApiConfig.SetToken(token, id);
 
-        this.saveMemberInfo();
+        this.store();
         
     }
 
-    public saveMemberInfo() {
+    public store() {
         var json = {
             id: this.id,
             name: this.name,
@@ -66,7 +66,7 @@ export class AppMember {
         AppUtil.Storage.set("memberlogin", jsonstr);
     }
 
-    public loadLogin() {
+    public restore() {
         AppUtil.Storage.get("memberlogin").then(jsonstr => {
             if (jsonstr==null||jsonstr == "") {
                 return;

@@ -7,17 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-      <ion-buttons start>
-          <button ion-button (click)="dismiss()" icon-left clear color="primary">
-              <ion-icon name="arrow-back"></ion-icon>
-          </button>
-      </ion-buttons>
     <ion-title>{{Lang["memberinfo"]}}</ion-title>
-      <ion-buttons end>
-          <button ion-button (click)="save()" icon-left clear color="primary">
-              <ion-icon name="checkmark"></ion-icon>
-          </button>
-      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -31,7 +21,7 @@
         <img src="{{Member.getPhoto()}}">
       </ion-avatar>
     </button>
-    <button ion-item>
+    <button ion-item (click)="changeName()">
       <span  style="max-width: 50%;">{{Lang["name"]}}</span>
       <span item-end>
         {{Member.name}}
@@ -39,16 +29,16 @@
     </button>
     <ion-item>
       <ion-label>{{Lang["sexual"]}}</ion-label>
-      <ion-select [(ngModel)]="sexual" [placeholder]="Lang['clicktoselect']" item-end>
+      <ion-select [(ngModel)]="sexual" [placeholder]="Lang['clicktoselect']"  (ionChange)="changeSexual($event)"  item-end>
         <ion-option value="M" >{{Lang["male"]}}</ion-option>
         <ion-option value="F" >{{Lang["female"]}}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>{{Lang["birth"]}}</ion-label>
-      <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="birth" ion-end [placeholder]="Lang['clicktoselect']"></ion-datetime>
+      <ion-datetime (ionChange)="changeBirth($event)" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" [(ngModel)]="birth" ion-end [placeholder]="Lang['clicktoselect']"></ion-datetime>
     </ion-item>
-    <button ion-item>
+    <button ion-item  (click)="changeIntroduce()">
       <span>{{Lang["introduce"]}}</span>
       <span style="max-width: 50%;" item-end>
         {{introduce}}

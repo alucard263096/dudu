@@ -24,7 +24,7 @@ export class MyApp {
         statusBar.styleDefault();
         ApiConfig.SetLoadingCtrl(loadCtrl);
         AppUtil.Storage = storage;
-        AppMember.GetInstance().loadLogin();
+        AppMember.GetInstance().restore();
         
     });
   }

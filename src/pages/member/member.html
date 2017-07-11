@@ -9,7 +9,7 @@
       <ion-row >
         <ion-col col-12>
           <div *ngIf="!Member.isLogined()" class="img-avatar" (click)="openLogin()">
-            <img src="/assets/img/bg-member-default.jpg" />
+            <img src="assets/img/bg-member-default.jpg" />
           </div>
           <div  *ngIf="Member.isLogined()" class="img-avatar"  (click)="openLogin()" >
             <img src="{{Member.getPhoto()}}" />
