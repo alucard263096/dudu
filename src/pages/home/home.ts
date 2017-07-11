@@ -32,13 +32,8 @@ export class HomePage extends AppBase {
                 this.playtypes = data;
             });
 
-        //var modal = this.modalCtrl.create("InputPage", { title: "yyyy", value: "hello world", placeholder: "please fill up", inputtype: "text" });
-        //modal.onDidDismiss(data => {
-        //    if (data.code == 0) {
-        //        alert(data.value);
-        //    }
-        //});
-        //modal.present();
+        var modal = this.modalCtrl.create("MemberInfoPage");
+        modal.present();
     }
     clickBanner() {
 

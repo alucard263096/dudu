@@ -1,8 +1,9 @@
 ﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController, ModalController, ActionSheetController  } from 'ionic-angular';
 import { AppBase } from "../../app/app.base";
 import { MemberApi } from '../../providers/member.api';
 import { MemberinfoApi } from '../../providers/memberinfo.api';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the MemberInfoPage page.
@@ -14,7 +15,7 @@ import { MemberinfoApi } from '../../providers/memberinfo.api';
 @Component({
     selector: 'page-member-info',
     templateUrl: 'member-info.html',
-    providers: [MemberApi, MemberinfoApi]
+    providers: [MemberApi, MemberinfoApi, Camera]
 })
 export class MemberInfoPage extends AppBase {
     sexual: string = "";
@@ -22,7 +23,8 @@ export class MemberInfoPage extends AppBase {
     introduce: string = "";
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public toastCtrl: ToastController
-        , public modalCtrl: ModalController
+        , public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController
+        , private camera: Camera
         , public memberApi: MemberApi, public memberinfoApi: MemberinfoApi) {
         super();
     }
@@ -111,5 +113,45 @@ export class MemberInfoPage extends AppBase {
             }
         });
         modal.present();
+    }
+
+     options: CameraOptions = {
+        quality: 100,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE
+    }
+    
+
+    clickPhoto() {
+        let actionSheet = this.actionSheetCtrl.create({
+            buttons: [
+                {
+                    text: this.Lang["selectfromalbum"],
+                    handler: () => {
+
+                    }
+                }, {
+                    text: this.Lang["takephoto"],
+                    handler: () => {
+                        this.camera.getPicture(this.options).then((imageData) => {
+                            // imageData is either a base64 encoded string or a file URI
+                            // If it's base64:
+                            //let base64Image = 'data:image/jpeg;base64,' + imageData;
+                            alert(imageData);
+                        }, (err) => {
+                            // Handle error
+                        });
+                    }
+                }, {
+                    text: this.Lang["cancel"],
+                    role: 'cancel',
+                    handler: () => {
+
+                    }
+                }
+            ]
+        });
+        actionSheet.present();
     }
 }

@@ -43,8 +43,11 @@ export class AppLang {
         AppLang.Lang["male"] = "男";
         AppLang.Lang["female"] = "女";
         AppLang.Lang["clicktoselect"] = "点击选择"; 
-        AppLang.Lang["updatefail"] = "更新失败";
+        AppLang.Lang["updatefail"] = "更新失败"; 
         AppLang.Lang["save"] = "保存";
+        AppLang.Lang["selectfromalbum"] = "从相册选择";
+        AppLang.Lang["takephoto"] = "拍照";
+        AppLang.Lang["cancel"] = "取消";
 
 
 

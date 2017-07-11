@@ -26,7 +26,7 @@ export class AppMember {
     }
 
     public getPhoto() {
-        if (this.photo.trim() == "") {
+        if (this.photo==null||this.photo.trim() == "") {
             return "assets/img/bg-member-default.jpg";;
         }
         return this.photo.indexOf("http") == 0 ? this.photo : ApiConfig.getUploadPath() + "member/" + this.photo;
@@ -89,7 +89,15 @@ export class AppMember {
     public logout() {
 
         AppUtil.Storage.remove("memberlogin");
-        AppMember.instance = new AppMember();
+        this.id = "";
+        this.name = "";
+        this.photo = "";
+        this.loginname = "";
+        this.email = "";
+        this.mobile = "";
+        this.token = "";
+        this.oauthtype = "";
+        this.oauthunionid = "";
 
     }
 

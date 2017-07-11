@@ -1,4 +1,4 @@
-<!--
+﻿<!--
   Generated template for the InputPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -6,19 +6,21 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-      <ion-buttons start>
-          <button ion-button (click)="cancel()" icon-left clear color="primary">
-              <ion-icon name="arrow-back"></ion-icon>
-          </button>
-      </ion-buttons>
-    <ion-title>{{title}}</ion-title>
-      <ion-buttons end>
-          <button ion-button (click)="ok()" icon-left clear color="primary">
-              {{Lang["save"]}}
-          </button>
-      </ion-buttons>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="cancel()"  color="primary">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title >{{title}}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="ok()"  color="primary">        
+        {{Lang["save"]}}
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
 
 </ion-header>
 
