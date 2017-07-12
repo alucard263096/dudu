@@ -26,7 +26,7 @@ export class AppMember {
     }
 
     public getPhoto() {
-        if (this.photo==null||this.photo.trim() == "") {
+        if (this.photo == null || this.photo.trim() == "") {
             return "assets/img/bg-member-default.jpg";;
         }
         return this.photo.indexOf("http") == 0 ? this.photo : ApiConfig.getUploadPath() + "member/" + this.photo;
@@ -37,7 +37,6 @@ export class AppMember {
         this.id = id;
         this.name = name;
         this.photo = photo;
-        this.photo = 
         this.loginname = loginname;
         this.email = email;
         this.mobile = mobile;

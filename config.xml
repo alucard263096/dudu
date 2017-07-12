@@ -101,6 +101,7 @@
     <plugin name="cordova-plugin-camera" spec="^2.4.1" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.6.3" />
     <plugin name="cordova-plugin-qqsdk" spec="^0.9.4">
         <variable name="QQ_APP_ID" value="1105386398" />
     </plugin>

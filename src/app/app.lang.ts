@@ -46,9 +46,12 @@ export class AppLang {
         AppLang.Lang["updatefail"] = "更新失败"; 
         AppLang.Lang["save"] = "保存";
         AppLang.Lang["selectfromalbum"] = "从相册选择";
-        AppLang.Lang["takephoto"] = "拍照";
-        AppLang.Lang["cancel"] = "取消";
-
+        AppLang.Lang["takephoto"] = "拍照"; 
+        AppLang.Lang["cancel"] = "取消"; 
+        AppLang.Lang["photoupladfail"] = "图片上传失败";
+        AppLang.Lang["setpassword"] = "设置密码";
+        AppLang.Lang["passwordcannotnull"] = "密码不能为空";
+        
 
 
     }

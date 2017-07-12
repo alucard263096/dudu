@@ -138,6 +138,9 @@ export class LoginPage extends AppBase {
 
                     loginpage.Member.setLogin(data.return.id, data.return.name, data.return.photo,
                         data.return.loginname, data.return.email, data.return.mobile, data.return.token, data.return.oauthtype, data.return.oauthunionid);
+
+                    loginpage.dimiss();
+
                 });
 
             }, function (reason) {

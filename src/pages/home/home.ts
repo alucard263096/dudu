@@ -32,8 +32,8 @@ export class HomePage extends AppBase {
                 this.playtypes = data;
             });
 
-        var modal = this.modalCtrl.create("MemberInfoPage");
-        modal.present();
+        //var modal = this.modalCtrl.create("MemberInfoPage");
+        //modal.present();
     }
     clickBanner() {
 

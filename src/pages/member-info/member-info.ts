@@ -1,9 +1,11 @@
 ﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ToastController, ModalController, ActionSheetController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController, ModalController, ActionSheetController } from 'ionic-angular';
+import { ApiConfig } from "../../app/api.config";
 import { AppBase } from "../../app/app.base";
 import { MemberApi } from '../../providers/member.api';
 import { MemberinfoApi } from '../../providers/memberinfo.api';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
 
 /**
  * Generated class for the MemberInfoPage page.
@@ -15,7 +17,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Component({
     selector: 'page-member-info',
     templateUrl: 'member-info.html',
-    providers: [MemberApi, MemberinfoApi, Camera]
+    providers: [MemberApi, MemberinfoApi, Camera, Transfer]
 })
 export class MemberInfoPage extends AppBase {
     sexual: string = "";
@@ -24,7 +26,7 @@ export class MemberInfoPage extends AppBase {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public toastCtrl: ToastController
         , public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController
-        , private camera: Camera
+        , private camera: Camera, private transfer: Transfer
         , public memberApi: MemberApi, public memberinfoApi: MemberinfoApi) {
         super();
     }
@@ -115,13 +117,8 @@ export class MemberInfoPage extends AppBase {
         modal.present();
     }
 
-     options: CameraOptions = {
-        quality: 100,
-        destinationType: this.camera.DestinationType.DATA_URL,
-        encodingType: this.camera.EncodingType.JPEG,
-        mediaType: this.camera.MediaType.PICTURE
-    }
-    
+
+
 
     clickPhoto() {
         let actionSheet = this.actionSheetCtrl.create({
@@ -129,18 +126,48 @@ export class MemberInfoPage extends AppBase {
                 {
                     text: this.Lang["selectfromalbum"],
                     handler: () => {
+                        let options: CameraOptions = {
+                            quality: 75,
+                            targetWidth: 200,
+                            targetHeight: 200,
+                            allowEdit: true,
+                            destinationType: this.camera.DestinationType.FILE_URI,
+                            sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
+                            encodingType: this.camera.EncodingType.JPEG,
+                            mediaType: this.camera.MediaType.PICTURE
+                        };
+                        this.camera.getPicture(options).then(imageData => {
+                            //alert(imageData);
+                            this.fileupload(imageData);
+                            if (imageData.length > 10) {
+                                //this.newPhotoData = imageData;
+                                //this.imageData = "data:image/jpeg;base64," + imageData;
+                                //this.isNeedModify = true;
+                            }
 
+                        });
                     }
                 }, {
                     text: this.Lang["takephoto"],
                     handler: () => {
-                        this.camera.getPicture(this.options).then((imageData) => {
-                            // imageData is either a base64 encoded string or a file URI
-                            // If it's base64:
-                            //let base64Image = 'data:image/jpeg;base64,' + imageData;
-                            alert(imageData);
-                        }, (err) => {
-                            // Handle error
+                        let options: CameraOptions = {
+                            quality: 75,
+                            targetWidth: 200,
+                            targetHeight: 200,
+                            allowEdit: true,
+                            destinationType: this.camera.DestinationType.FILE_URI,
+                            sourceType: this.camera.PictureSourceType.CAMERA,
+                            encodingType: this.camera.EncodingType.JPEG
+                        }
+                        this.camera.getPicture(options).then(imageData => {
+                            //alert(imageData);
+                            this.fileupload(imageData);
+                            if (imageData.length > 10) {
+                                //this.newPhotoData = imageData;
+                                //this.imageData = "data:image/jpeg;base64," + imageData;
+                                //this.isNeedModify = true;
+                            }
+
                         });
                     }
                 }, {
@@ -153,5 +180,45 @@ export class MemberInfoPage extends AppBase {
             ]
         });
         actionSheet.present();
+    }
+    fileupload(filepath) {
+        let fileTransfer: TransferObject = this.transfer.create();
+
+        let options: FileUploadOptions = {
+            fileKey: 'file',
+            fileName: 'photo.jpg'
+        };
+
+
+        fileTransfer.upload(filepath, ApiConfig.getFileUploadAPI() + "?field=file&module=member")
+            .then((data) => {
+                // success
+
+                //alert(JSON.stringify(data));
+                if (data.response.substring(0, 7) == "success") {
+                    var photo = data.response.split('|~~|')[1];
+                    //alert(photo);
+                    var json = { photo: photo };
+                    this.memberinfoApi.singleupdate(json).then(data => {
+                        if (data.code != 0) {
+                            this.toast(this.toastCtrl, this.Lang["updatefail"]);
+                        } else {
+                            this.Member.photo = photo;
+                            this.Member.store();
+                        }
+                    });
+
+
+
+                } else {
+                    this.toast(this.toastCtrl, this.Lang["photoupladfail"]);
+                }
+
+            }, (err) => {
+                // error
+
+                this.toast(this.toastCtrl, this.Lang["photoupladfail"]);
+            });
+
     }
 }

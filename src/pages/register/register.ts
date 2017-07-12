@@ -19,6 +19,7 @@ import { MemberApi } from '../../providers/member.api';
 })
 export class RegisterPage extends AppBase {
     mobile: string = "";
+    password: string = "";
     verifycode: string = "";
     resendreminder = 0;
     resentmsg: string = this.Lang["waitresendsms"];
@@ -96,11 +97,21 @@ export class RegisterPage extends AppBase {
             this.toast(this.toastCtrl, this.Lang["verifycodecannotnull"]);
             return;
         }
-        var json = { mobile: this.mobile, verifycode: this.verifycode };
+        this.step++;
+        
+    }
+    next3() {
+
+        if (this.password.toString().trim() == "") {
+            this.toast(this.toastCtrl, this.Lang["passwordcannotnull"]);
+            return;
+        }
+
+        var json = { mobile: this.mobile, verifycode: this.verifycode, password: ApiConfig.MD5(this.password) };
         this.memberApi.smsregister(json).then((data) => {
             if (data.code == -3) {
                 this.toast(this.toastCtrl, this.Lang["mobilehaveregister"]);
-            } else if(data.code == -1) {
+            } else if (data.code == -1) {
                 this.toast(this.toastCtrl, this.Lang["verifyincorrect"]);
             } else {
                 //alert(JSON.stringify(data));

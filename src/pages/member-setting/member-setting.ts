@@ -20,7 +20,6 @@ export class MemberSettingPage extends AppBase {
     }
 
     ionViewDidLoad() {
-        
         console.log('ionViewDidLoad MemberSettingPage');
     }
 
