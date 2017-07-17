@@ -51,6 +51,7 @@ export class AppLang {
         AppLang.Lang["photoupladfail"] = "图片上传失败";
         AppLang.Lang["setpassword"] = "设置密码";
         AppLang.Lang["passwordcannotnull"] = "密码不能为空";
+        AppLang.Lang["bingmobile"] = "绑定手机号码";
         
 
 
