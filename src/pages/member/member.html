@@ -1,27 +1,35 @@
-﻿<ion-content>
-  <div class="photopart" >
-    <ion-grid>
-      <ion-row>
-        <ion-col col-12 text-right>
-          <ion-icon ion-text color="light" name="settings" style="font-size:large" (click)="openSetting()"> {{Lang["setting"]}} </ion-icon>
-        </ion-col>
-      </ion-row>
-      <ion-row >
-        <ion-col col-12>
-          <div *ngIf="!Member.isLogined()" class="img-avatar" (click)="openLogin()">
-            <img src="assets/img/bg-member-default.jpg" />
-          </div>
-          <div  *ngIf="Member.isLogined()" class="img-avatar"   >
-            <img src="{{Member.getPhoto()}}" />
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12 text-center  >
-          <p  *ngIf="!Member.isLogined()"  ion-text color="light" (click)="openLogin()">{{Lang["clicktologin"]}}</p>
-          <p  ion-text color="light" >{{Member.name}}</p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+﻿<ion-header>
+  <ion-grid style="min-height:120px;">
+    <ion-row>
+      <ion-col col-12 text-right>
+        <ion-icon name="settings-outline" style="font-size:1.8em;" (click)="openSetting()"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!Member.isLogined()">
+      <ion-col col-2></ion-col>
+      <ion-col col-4 text-center>
+        <button ion-button block small color="light"  (click)="gotoRegister()" outline>{{Lang["register"]}}</button>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <button ion-button block small color="light" (click)="gotoLogin()">{{Lang["login"]}}</button>
+      </ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row>
+    <ion-row *ngIf="Member.isLogined()">
+      <ion-col col-1> </ion-col>
+      <ion-col col-2>
+        <ion-avatar>
+          <img src="{{Member.getPhoto()}}">
+        </ion-avatar>
+      </ion-col>
+      <ion-col col-1> </ion-col>
+      <ion-col col-8 text-left>
+        <h5 style="margin-top:0px;">{{Member.name}}</h5>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+<ion-content>
+  
+
 </ion-content>

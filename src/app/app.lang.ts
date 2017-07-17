@@ -32,7 +32,7 @@ export class AppLang {
         AppLang.Lang["mobilenotregister"] = "手机号码尚未注册"; 
         AppLang.Lang["passwordcannotnull"] = "密码不能为空"; 
         AppLang.Lang["setting"] = "设置"; 
-        AppLang.Lang["memberinfo"] = "个人信息"; 
+        AppLang.Lang["memberinfo"] = "账号资料"; 
         AppLang.Lang["changepassword"] = "修改密码"; 
         AppLang.Lang["logout"] = "退出登录";
         AppLang.Lang["photo"] = "头像";

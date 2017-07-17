@@ -5,26 +5,24 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-toolbar >
+  <ion-toolbar>
     <ion-buttons left>
-      <button ion-button icon-only (click)="dismiss()" color="primary">
+      <button ion-button="bar-button" (click)="dimiss()" icon-left clear color="primary" large >
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
-
-    <ion-title>{{Lang["setting"]}}</ion-title>
-
+    <ion-title>{{Lang["login"]}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content >
+<ion-content  style="background-color:#eeeeee;">
     <ion-list>
         <button ion-item (click)="gotoMemberInfo()">
             {{Lang["memberinfo"]}}
         </button>
-        <button ion-item>
-            {{Lang["bingmobile"]}}
+        <button ion-item (click)="gotoBindMobile">
+            {{Lang["bindmobile"]}}
         </button>
         <button ion-item>
             {{Lang["changepassword"]}}

@@ -4,28 +4,8 @@
     background-color: #488aff;
   }
 
-  .img-avatar {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-align-content: center;
-    -ms-flex-line-pack: center;
-    align-content: center;
-    align-items: center;
-    -webkit-flex-item-align: center;
-    clear: both;
-    border: 0px;
-    margin: 0px 0px 0px 0px;
-  }
 
   img {
-    max-height: 11rem;
-    min-height: 11rem;
-    min-width: 11rem;
-    max-width: 11rem;
     border-radius: 50%;
     border: 3px solid #cccccc;
   }

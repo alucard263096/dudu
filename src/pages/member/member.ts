@@ -14,7 +14,7 @@ import { AppBase } from '../../app/app.base';
     templateUrl: 'member.html',
 })
 export class MemberPage extends AppBase  {
-
+    
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
         super();
     }
@@ -22,11 +22,16 @@ export class MemberPage extends AppBase  {
     ionViewDidLoad() {
         console.log('ionViewDidLoad MemberPage');
     }
-    openLogin() {
+    gotoLogin() {
         var modal = this.modalCtrl.create("LoginPage");
         modal.present();
     }
+    gotoRegister() {
+        var modal = this.modalCtrl.create("RegisterPage");
+        modal.present();
+    }
     openSetting() {
+
         var modal = this.modalCtrl.create("MemberSettingPage");
         modal.present();
 

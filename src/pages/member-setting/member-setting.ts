@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { AppBase} from '../../app/app.base';
 
 /**
@@ -15,11 +15,20 @@ import { AppBase} from '../../app/app.base';
 })
 export class MemberSettingPage extends AppBase {
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modalCtrl: ModalController) {
         super();
     }
 
     ionViewDidLoad() {
+        if (this.Member.isLogined() == false) {
+            var modal = this.modalCtrl.create("LoginPage");
+            modal.onDidDismiss(data => {
+                if (this.Member.isLogined() == false) {
+                    //this.dismiss();
+                }
+            });
+            modal.present();
+        }
         console.log('ionViewDidLoad MemberSettingPage');
     }
 

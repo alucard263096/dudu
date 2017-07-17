@@ -12,7 +12,7 @@ import { MemberPage } from '../member/member';
 })
 export class TabsPage extends AppBase {
 
-  tab1Root = HomePage;
+    tab1Root = HomePage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
   tab4Root = MemberPage;
