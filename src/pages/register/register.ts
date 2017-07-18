@@ -22,8 +22,9 @@ export class RegisterPage extends AppBase {
     password: string = "";
     verifycode: string = "";
     resendreminder = 0;
-    resentmsg: string = this.Lang["waitresendsms"];
     step = 1;
+
+   
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public viewCtrl: ViewController, public toastCtrl: ToastController
         , public memberApi: MemberApi) {
@@ -34,10 +35,20 @@ export class RegisterPage extends AppBase {
     dismiss() {
         this.viewCtrl.dismiss();
     }
+
     back() {
         this.step--;
         if (this.step == 0) {
             this.dismiss();
+        }
+    }
+
+    getTitle() {
+        if (this.step == 1) {
+            return this.Lang["registeraccount"];
+        }
+        if (this.step == 2) {
+            return this.Lang["verifymobileno"];
         }
     }
 
@@ -50,6 +61,7 @@ export class RegisterPage extends AppBase {
             this.toast(this.toastCtrl, this.Lang["mobilecannotnull"]);
             return;
         }
+
         var json = { mobile: this.mobile };
         this.memberApi.checkmobileregister(json).then((data) => {
             if (data.code == 0) {

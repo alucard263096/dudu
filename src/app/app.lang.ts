@@ -18,16 +18,22 @@ export class AppLang {
         AppLang.Lang["register"] = "注册";
         AppLang.Lang["registeraccount"] = "注册账号";
         AppLang.Lang["next"] = "下一步"; 
-        AppLang.Lang["inputmobileno"] = "请输入手机号码"; 
+        AppLang.Lang["inputmobileno"] = "请输入常用手机号码"; 
         AppLang.Lang["mobilehaveregister"] = "手机号码已经被注册"; 
         AppLang.Lang["retryafterminute"] = "请在一分钟后重试"; 
         AppLang.Lang["smssentfail"] = "发送短信失败，请验证手机号码"; 
-        AppLang.Lang["waitresendsms"] = "重新发送";
+        AppLang.Lang["resendmsg"] = "重新发送验证码";
+        AppLang.Lang["secondresend"] = "秒后可重发"; 
         AppLang.Lang["verifycode"] = "请输入短信验证码"; 
         AppLang.Lang["verifycodecannotnull"] = "验证码不能为空";
         AppLang.Lang["verifyincorrect"] = "验证码不正确"; 
         AppLang.Lang["smslogin"] = "短信登录"; 
         AppLang.Lang["getverifycode"] = "获取验证码";
+        AppLang.Lang["clickgetverifycodetoagreepolicy"] = "点击\"获取验证码\"按钮，即表示同意";
+        AppLang.Lang["registerpolicy"] = "注册条款";
+        AppLang.Lang["verifymobileno"] = "验证手机号";
+        AppLang.Lang["verifycodesenttips"] = "验证码已发送到以下手机，请尽快完成注册";
+
         AppLang.Lang["reminder"] = "剩余"; 
         AppLang.Lang["mobilenotregister"] = "手机号码尚未注册"; 
         AppLang.Lang["passwordcannotnull"] = "密码不能为空"; 
