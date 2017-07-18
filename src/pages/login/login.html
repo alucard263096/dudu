@@ -7,8 +7,8 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons left>
-            <button ion-button (click)="dimiss()" icon-left clear color="primary">
-                <ion-icon name="arrow-back"></ion-icon>
+            <button ion-button (click)="dismiss()" icon-left clear color="primary">
+                <ion-icon name="close"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>{{Lang["login"]}}</ion-title>
@@ -31,14 +31,17 @@
     <div [ngSwitch]="logintype">
         <ion-list *ngSwitchCase="'pwd'">
             <ion-item>
+                <ion-icon name="person-outline" item-start></ion-icon>
                 <ion-input type="text" [placeholder]="Lang['mobile']" [(ngModel)]="mobile"></ion-input>
             </ion-item>
             <ion-item>
+                <ion-icon name="lock-outline" item-start></ion-icon>
                 <ion-input type="password" [placeholder]="Lang['password']" [(ngModel)]="password"></ion-input>
             </ion-item>
         </ion-list>
         <ion-list *ngSwitchCase="'sms'">
             <ion-item>
+                <ion-icon name="person-outline" item-start></ion-icon>
                 <ion-input type="text" [placeholder]="Lang['mobile']" [(ngModel)]="mobile"></ion-input>
             </ion-item>
             <ion-item>

@@ -31,13 +31,13 @@ export class RegisterPage extends AppBase {
         this.mobile = navParams.get("mobile");
     }
 
-    dimiss() {
+    dismiss() {
         this.viewCtrl.dismiss();
     }
     back() {
         this.step--;
         if (this.step == 0) {
-            this.dimiss();
+            this.dismiss();
         }
     }
 

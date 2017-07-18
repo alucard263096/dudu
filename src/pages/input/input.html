@@ -25,7 +25,7 @@
 </ion-header>
 
 
-<ion-content  style="background-color:#eeeeee;">
+<ion-content >
     <ion-list style="margin-top:20px;">
         <ion-item>
             <ion-input *ngIf="inputtype=='text'" type="text" placeholder="{{placeholder}}" [(ngModel)]="value" clearInput  maxlength="{{maxlength}}" (input)="change(value)"></ion-input>

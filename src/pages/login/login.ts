@@ -31,7 +31,7 @@ export class LoginPage extends AppBase {
         super();
     }
 
-    dimiss() {
+    dismiss() {
         this.viewCtrl.dismiss();
     }
 
@@ -42,8 +42,8 @@ export class LoginPage extends AppBase {
     gotoRegister() {
         var modal = this.modalCtrl.create("RegisterPage", { mobile: this.mobile });
         modal.onDidDismiss(data => {
-            if (data.logined == true) {
-                this.dimiss();
+            if (data!=null&&data.logined == true) {
+                this.dismiss();
             }
         });
         modal.present();
@@ -67,7 +67,7 @@ export class LoginPage extends AppBase {
                 if (data.code == 0) {
                     this.Member.setLogin(data.return.id, data.return.name, data.return.photo,
                         data.return.loginname, data.return.email, data.return.mobile, data.return.token);
-                    this.dimiss();
+                    this.dismiss();
                 } else {
                     this.toast(this.toastCtrl, this.Lang["invalidpassword"]);
                 }
@@ -83,7 +83,7 @@ export class LoginPage extends AppBase {
                 if (data.code == 0) {
                     this.Member.setLogin(data.return.id, data.return.name, data.return.photo,
                         data.return.loginname, data.return.email, data.return.mobile, data.return.token);
-                    this.dimiss();
+                    this.dismiss();
                 } else if (data.code == -2) {
                     this.toast(this.toastCtrl, this.Lang["mobilenotregister"]);
                 } else {
@@ -139,7 +139,7 @@ export class LoginPage extends AppBase {
                     loginpage.Member.setLogin(data.return.id, data.return.name, data.return.photo,
                         data.return.loginname, data.return.email, data.return.mobile, data.return.token, data.return.oauthtype, data.return.oauthunionid);
 
-                    loginpage.dimiss();
+                    loginpage.dismiss();
 
                 });
 
