@@ -23,11 +23,11 @@
     <ion-list>
       <ion-item>
         <h2 item-start>+86</h2>
-        <ion-input style="font-size:1.8rem" type="number" [value]="mobile" (input)="mobile=$event.target.value" placeholder="{{Lang['inputmobileno']}}"></ion-input>
+        <ion-input  type="number" [value]="mobile" (input)="mobile=$event.target.value" placeholder="{{Lang['inputmobileno']}}"></ion-input>
       </ion-item>
     </ion-list>
     <div style="width:90%;margin-left:5%;">
-      <button ion-button block (click)="next1()">{{Lang["getverifycode"]}}</button>
+      <button ion-button block (click)="next1()"  [disabled]="mobile.length!=11">{{Lang["getverifycode"]}}</button>
       <p>{{Lang["clickgetverifycodetoagreepolicy"]}}<span ion-text color="primary">{{Lang["registerpolicy"]}}</span></p>
     </div>
   </div>
@@ -45,7 +45,7 @@
       <ion-col text-center col-6>
         <ion-list>
           <ion-item>
-            <ion-input style="font-size:1.8rem" type="number" [value]="verifycode" (input)="verifycode=$event.target.value" placeholder="{{Lang['verifycode']}}"  text-center maxlength="6"></ion-input>
+            <ion-input type="number" [value]="verifycode" (input)="verifycode=$event.target.value" placeholder="{{Lang['verifycode']}}"  text-center maxlength="6"></ion-input>
           </ion-item>
         </ion-list>
         <h3 (click)="sendVerifyCodeAgain()" *ngIf="resendreminder<=0" color="primary" ion-text>
@@ -58,43 +58,31 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <button ion-button block (click)="next2()">{{Lang["next"]}}</button>
+        <button ion-button block (click)="next2()"  [disabled]="verifycode.length!=6">{{Lang["next"]}}</button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
 
-  <div *ngIf="step==3" style="margin-top:2em;">
+  <div *ngIf="step==3" >
+    <div style="width:90%;margin-left:5%;">
+      <p>{{Lang["setpasswordtips"]}}</p>
+    </div>
     <ion-list>
       <ion-item>
-        <h2 item-start>+86</h2>
-        <ion-input style="font-size:1.8rem" type="number" [value]="mobile" (input)="mobile=$event.target.value" placeholder="{{Lang['inputmobileno']}}"></ion-input>
+        <h2 item-start>{{Lang["name"]}}</h2>
+        <ion-input type="text" [value]="name" (input)="name=$event.target.value" placeholder="{{Lang['nameinputtips']}}" maxlength="16"></ion-input>
       </ion-item>
     </ion-list>
     <ion-list>
       <ion-item>
-        <h2 item-start>+86</h2>
-        <ion-input style="font-size:1.8rem" type="number" [value]="mobile" (input)="mobile=$event.target.value" placeholder="{{Lang['inputmobileno']}}"></ion-input>
+        <h2 item-start>{{Lang["password"]}}</h2>
+        <ion-input type="password" [value]="password" (input)="password=$event.target.value" placeholder="{{Lang['setpassword']}}"></ion-input>
       </ion-item>
     </ion-list>
     <div style="width:90%;margin-left:5%;">
-      <button ion-button block (click)="next1()">{{Lang["getverifycode"]}}</button>
-      <p>{{Lang["clickgetverifycodetoagreepolicy"]}}<span ion-text color="primary">{{Lang["registerpolicy"]}}</span></p>
+      <button ion-button block (click)="next3()" [disabled]="password==''||name.length<3">{{Lang["done"]}}</button>
     </div>
   </div>
-
-    <ion-grid *ngIf="step==3">
-        <ion-row>
-            <ion-col>
-                <ion-input style="font-size:1.8rem" type="password" [value]="password" (input)="password=$event.target.value" placeholder="{{Lang['setpassword']}}"></ion-input>
-            </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <button ion-button block (click)="next3()">{{Lang["next"]}}</button>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
-
 
 </ion-content>

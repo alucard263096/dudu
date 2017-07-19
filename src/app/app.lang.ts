@@ -43,6 +43,7 @@ export class AppLang {
         AppLang.Lang["logout"] = "退出登录";
         AppLang.Lang["photo"] = "头像";
         AppLang.Lang["name"] = "昵称";
+        AppLang.Lang["nameinputtips"] = "3-16个字符以内，区分大小写";
         AppLang.Lang["sexual"] = "性别";
         AppLang.Lang["birth"] = "出生年月";
         AppLang.Lang["introduce"] = "个人介绍";
@@ -56,8 +57,10 @@ export class AppLang {
         AppLang.Lang["cancel"] = "取消"; 
         AppLang.Lang["photoupladfail"] = "图片上传失败";
         AppLang.Lang["setpassword"] = "设置密码";
+        AppLang.Lang["setpasswordtips"] = "设置密码后，你就可以使用手机号登录";
         AppLang.Lang["passwordcannotnull"] = "密码不能为空";
         AppLang.Lang["bingmobile"] = "绑定手机号码";
+        AppLang.Lang["done"] = "完成";
         
 
 

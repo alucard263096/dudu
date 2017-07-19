@@ -18,6 +18,7 @@ import { MemberApi } from '../../providers/member.api';
     providers: [MemberApi]
 })
 export class RegisterPage extends AppBase {
+    name: string = "";
     mobile: string = "";
     password: string = "";
     verifycode: string = "";
@@ -30,6 +31,9 @@ export class RegisterPage extends AppBase {
         , public memberApi: MemberApi) {
         super();
         this.mobile = navParams.get("mobile");
+        if (this.mobile == undefined) {
+            this.mobile = "";
+        }
     }
 
     dismiss() {
@@ -49,6 +53,9 @@ export class RegisterPage extends AppBase {
         }
         if (this.step == 2) {
             return this.Lang["verifymobileno"];
+        }
+        if (this.step == 3) {
+            return this.Lang["setpassword"];
         }
     }
 
@@ -119,7 +126,7 @@ export class RegisterPage extends AppBase {
             return;
         }
 
-        var json = { mobile: this.mobile, verifycode: this.verifycode, password: ApiConfig.MD5(this.password) };
+        var json = { mobile: this.mobile, verifycode: this.verifycode, password: ApiConfig.MD5(this.password), name: this.name };
         this.memberApi.smsregister(json).then((data) => {
             if (data.code == -3) {
                 this.toast(this.toastCtrl, this.Lang["mobilehaveregister"]);

@@ -36,5 +36,10 @@ export class MemberPage extends AppBase  {
         modal.present();
 
     }
+    gotoMemberInfo() {
+        var modal = this.modalCtrl.create("MemberInfoPage");
+        modal.present();
+
+    }
 
 }
