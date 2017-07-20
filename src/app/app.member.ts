@@ -11,9 +11,6 @@ export class AppMember {
     public id:string = "";
     public name: string = "";
     public photo: string = "";
-    public loginname: string = "";
-    public email: string = "";
-    public mobile: string = "";
     public token: string = "";
     public oauthtype: string = "";
     public oauthunionid: string = "";
@@ -33,13 +30,10 @@ export class AppMember {
         
     }
 
-    public setLogin(id, name, photo, loginname, email, mobile, token,oauthtype="",oauthunionid="") {
+    public setLogin(id, name, photo,  token,oauthtype="",oauthunionid="") {
         this.id = id;
         this.name = name;
         this.photo = photo;
-        this.loginname = loginname;
-        this.email = email;
-        this.mobile = mobile;
         this.token = token;
         this.oauthtype = oauthtype;
         this.oauthunionid = oauthunionid;
@@ -54,9 +48,6 @@ export class AppMember {
             id: this.id,
             name: this.name,
             photo: this.photo,
-            loginname: this.loginname,
-            email: this.email,
-            mobile: this.mobile,
             token: this.token,
             oauthtype: this.oauthtype,
             oauthunionid: this.oauthunionid
@@ -74,9 +65,6 @@ export class AppMember {
             this.id = jsonstr.id;
             this.name = jsonstr.name;
             this.photo = jsonstr.photo;
-            this.loginname = jsonstr.loginname;
-            this.email = jsonstr.email;
-            this.mobile = jsonstr.mobile;
             this.token = jsonstr.token;
             this.oauthtype = jsonstr.oauthtype;
             this.oauthunionid = jsonstr.oauthunionid;
@@ -91,9 +79,6 @@ export class AppMember {
         this.id = "";
         this.name = "";
         this.photo = "";
-        this.loginname = "";
-        this.email = "";
-        this.mobile = "";
         this.token = "";
         this.oauthtype = "";
         this.oauthunionid = "";

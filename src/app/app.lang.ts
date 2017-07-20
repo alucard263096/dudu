@@ -59,8 +59,10 @@ export class AppLang {
         AppLang.Lang["setpassword"] = "设置密码";
         AppLang.Lang["setpasswordtips"] = "设置密码后，你就可以使用手机号登录";
         AppLang.Lang["passwordcannotnull"] = "密码不能为空";
-        AppLang.Lang["bingmobile"] = "绑定手机号码";
-        AppLang.Lang["done"] = "完成";
+        AppLang.Lang["bindmobile"] = "绑定手机";
+        AppLang.Lang["done"] = "完成"; 
+        AppLang.Lang["accountsecurity"] = "账户安全";
+        AppLang.Lang["changemobile"] = "更换手机";
         
 
 

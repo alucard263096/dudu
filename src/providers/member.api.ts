@@ -245,6 +245,43 @@ public resetpassword(data, showLoadingModal:boolean=true) {
 
 
 //
+public sendloginsms(data, showLoadingModal:boolean=true) {
+        var url = ApiConfig.getApiUrl()+'member/sendloginsms';
+        var headers = ApiConfig.GetHeader(url, data);
+        let options = new RequestOptions({ headers: headers });
+
+        let body=ApiConfig.ParamUrlencoded(data);
+
+        let loading: Loading=null;
+        if(showLoadingModal){
+          loading = ApiConfig.GetLoadingModal();
+        }
+
+        return this.http.post(url, body, options).toPromise()
+            .then((res) => {
+              if(ApiConfig.DataLoadedHandle('member/sendloginsms',data,res)){
+                  if(showLoadingModal){
+      					     ApiConfig.DimissLoadingModal();
+                  }
+      				
+      					 return res.json();
+      				}else{
+                return Promise.reject(res);
+              }
+            })
+            .catch(err => {
+                
+                if(showLoadingModal){
+					         ApiConfig.DimissLoadingModal();
+                }
+                return ApiConfig.ErrorHandle('member/sendloginsms',data,err);
+            });
+
+        
+    }
+
+
+//
 public sendregistersms(data, showLoadingModal:boolean=true) {
         var url = ApiConfig.getApiUrl()+'member/sendregistersms';
         var headers = ApiConfig.GetHeader(url, data);
@@ -430,8 +467,8 @@ public wxappoauth(data, showLoadingModal:boolean=true) {
 
 
 //
-public sendloginsms(data, showLoadingModal:boolean=true) {
-        var url = ApiConfig.getApiUrl()+'member/sendloginsms';
+public mobile(data, showLoadingModal:boolean=true) {
+        var url = ApiConfig.getApiUrl()+'member/mobile';
         var headers = ApiConfig.GetHeader(url, data);
         let options = new RequestOptions({ headers: headers });
 
@@ -444,7 +481,7 @@ public sendloginsms(data, showLoadingModal:boolean=true) {
 
         return this.http.post(url, body, options).toPromise()
             .then((res) => {
-              if(ApiConfig.DataLoadedHandle('member/sendloginsms',data,res)){
+              if(ApiConfig.DataLoadedHandle('member/mobile',data,res)){
                   if(showLoadingModal){
       					     ApiConfig.DimissLoadingModal();
                   }
@@ -459,7 +496,7 @@ public sendloginsms(data, showLoadingModal:boolean=true) {
                 if(showLoadingModal){
 					         ApiConfig.DimissLoadingModal();
                 }
-                return ApiConfig.ErrorHandle('member/sendloginsms',data,err);
+                return ApiConfig.ErrorHandle('member/mobile',data,err);
             });
 
         

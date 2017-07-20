@@ -135,7 +135,7 @@ export class RegisterPage extends AppBase {
             } else {
                 //alert(JSON.stringify(data));
                 data = data.return;
-                this.Member.setLogin(data.id, data.name, data.photo, data.loginname, data.email, data.mobile, data.token, data.oauthtype, data.oauthunionid);
+                this.Member.setLogin(data.id, data.name, data.photo, data.token, data.oauthtype, data.oauthunionid);
                 this.viewCtrl.dismiss({ logined: true });
             }
         });

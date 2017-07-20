@@ -17,16 +17,17 @@
 
 
 <ion-content >
+    <ion-list></ion-list>
     <ion-list>
         <button ion-item (click)="gotoMemberInfo()">
             {{Lang["memberinfo"]}}
         </button>
-        <button ion-item (click)="gotoBindMobile">
-            {{Lang["bindmobile"]}}
+        <button ion-item (click)="gotoMemberSecurity()">
+            {{Lang["accountsecurity"]}}
         </button>
-        <button ion-item>
-            {{Lang["changepassword"]}}
-        </button>
+    </ion-list>
+
+    <ion-list>
         <button ion-item (click)="logout()">
             {{Lang["logout"]}}
         </button>

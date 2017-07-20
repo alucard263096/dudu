@@ -1,0 +1,34 @@
+<!--
+  Generated template for the MemberSecurityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="dismiss()" color="primary">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>{{Lang["accountsecurity"]}}</ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-list></ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-icon [name]="mobile.length>6?'checkmark-circle':'alert'" 
+                      [color]="mobile.length>6?'secondary':'danger'" item-start></ion-icon>
+            <h4>{{Lang["bindmobile"]}}</h4>
+            <p>{{mobile}}</p>
+            <button ion-button outline item-end >{{Lang["changemobile"]}}</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

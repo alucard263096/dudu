@@ -39,6 +39,9 @@ export class MemberSettingPage extends AppBase {
     gotoMemberInfo() {
         this.navCtrl.push("MemberInfoPage");
     }
+    gotoMemberSecurity() {
+        this.navCtrl.push("MemberSecurityPage");
+    }
     dismiss() {
         this.viewCtrl.dismiss();
     }

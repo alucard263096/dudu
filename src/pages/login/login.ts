@@ -66,7 +66,7 @@ export class LoginPage extends AppBase {
 
                 if (data.code == 0) {
                     this.Member.setLogin(data.return.id, data.return.name, data.return.photo,
-                        data.return.loginname, data.return.email, data.return.mobile, data.return.token);
+                         data.return.token);
                     this.dismiss();
                 } else {
                     this.toast(this.toastCtrl, this.Lang["invalidpassword"]);
@@ -82,7 +82,7 @@ export class LoginPage extends AppBase {
 
                 if (data.code == 0) {
                     this.Member.setLogin(data.return.id, data.return.name, data.return.photo,
-                        data.return.loginname, data.return.email, data.return.mobile, data.return.token);
+                         data.return.mobile, data.return.token);
                     this.dismiss();
                 } else if (data.code == -2) {
                     this.toast(this.toastCtrl, this.Lang["mobilenotregister"]);
@@ -137,7 +137,7 @@ export class LoginPage extends AppBase {
                     //alert(JSON.stringify(data));
 
                     loginpage.Member.setLogin(data.return.id, data.return.name, data.return.photo,
-                        data.return.loginname, data.return.email, data.return.mobile, data.return.token, data.return.oauthtype, data.return.oauthunionid);
+                        data.return.token, data.return.oauthtype, data.return.oauthunionid);
 
                     loginpage.dismiss();
 
