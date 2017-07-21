@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+﻿import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { AppBase } from "../../app/app.base";
 import { MemberApi } from '../../providers/member.api';
 
@@ -19,7 +19,7 @@ export class MemberSecurityPage extends AppBase {
 
     mobile: string = "";
 
-    constructor(public navCtrl: NavController, public navParams: NavParams
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public modalCtrl: ModalController
         , public memberApi: MemberApi) {
         super();
     }
@@ -31,4 +31,18 @@ export class MemberSecurityPage extends AppBase {
         });
     }
 
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
+    gotoBindMobile() {
+        var modal = this.modalCtrl.create("MemberBindMobilePage");
+        modal.onDidDismiss(result => {
+            if (result.code == 0) {
+                this.memberApi.mobile(null).then(data => {
+                    this.mobile = data.mobile;
+                });
+            }
+        });
+        modal.present();
+    }
 }

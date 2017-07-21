@@ -1,4 +1,4 @@
-<!--
+﻿<!--
   Generated template for the MemberSecurityPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -28,7 +28,7 @@
                       [color]="mobile.length>6?'secondary':'danger'" item-start></ion-icon>
             <h4>{{Lang["bindmobile"]}}</h4>
             <p>{{mobile}}</p>
-            <button ion-button outline item-end >{{Lang["changemobile"]}}</button>
+            <button ion-button outline item-end (click)="gotoBindMobile()">{{Lang["changemobile"]}}</button>
         </ion-item>
     </ion-list>
 </ion-content>
